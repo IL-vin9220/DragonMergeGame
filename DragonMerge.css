@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.bground{
+    background-image: url("background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* .bground div{
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    background-color: blue;
+    width: 150px;
+    height: 50px;
+}
+
+.btn1{
+    position: absolute;
+    top: 300px;
+    left: 300px;
+    bottom: 0px;
+    right: 0px;
+
+} */
+
+.btn{
+    background-color: aquamarine;
+}
+
+.btn:link,
+ .btn-visited{
+     text-decoration: none;
+     padding: 15px 40px;
+     display:inline-block;
+     border-radius: 100px;
+     transition: all .2s;
+     position: relative;
+}
+ .btn:hover{
+     transform: translateY(-5px);
+     box-shadow: 0 10px 20px rgba(0,0,0,.2);
+ }
+ .btn:active{
+     transform: translateY(-2px);
+     box-shadow: 0 5px 10px rgba(0,0,0,.2);
+ }
+ .btn-white{
+     background-color: #fff;
+     color: #777;
+ }

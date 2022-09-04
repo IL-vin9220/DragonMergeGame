@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gộp trứng rồng</title>
+    <link rel="stylesheet" href="CalMoneyForEggs.css">
+    <script src="DragonMerge.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="Info">
+            <div class="inp">
+                <table align="center" style="margin-top: 30px;">
+                    <tr>
+                        <td>Level rồng: </td>
+                        <td><input type="text" id="LevelDragon"></td>
+                        <td rowspan="5">
+                            
+                            <button type="button"  class="btn1" onclick="CalEggs()">Tính số trứng rồng</button>
+                            <button type="button"  class="btn2" onclick="CalLevelDragon()">Tính level rồng</button><br>
+                            <button type="button"  class="btn3" onclick="Calculator()">Tính toán</button>
+                            <button type="button" class="btn4"><a href="DragonMerge.html" style="text-decoration: none">Quay lại</a></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Lượng tiền hiện tại: </td>
+                        <td><input type="text" id="CurrentMoney"></td>
+                    </tr>
+                    <tr>
+                        <td>Số trứng cần mua: </td>
+                        <td><input type="text" id="OrderEggs"></td>
+                    </tr>
+                    <tr>
+                        <td>Giá 1 quả trứng hiện tại: </td>
+                        <td><input type="text" id="CostForEgg"></td>
+                    </tr>
+                    <tr>
+                        <td>Tính toán: </td>
+                        <td><input type="text" id="Cal"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><p id="result" class="result"></p></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="display">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
