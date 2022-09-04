@@ -23,12 +23,19 @@ function CalLevelDragon()
 {
     var sl = 2;
     var LevelDragon = parseInt(document.getElementById("LevelDragon").value);
-    for(var i=0; i<LevelDragon; i++)
+    if(LevelDragon < 2 && LevelDragon > 0)
+        sl = 2;
+    else if(LevelDragon < 0)
+        alert("Hehe, đừng trêu bé chứ, hí hí");
+    else
     {
-        if(sl%2 == 0)
-            sl = parseInt(sl/2)*5;
-        else
-            sl = parseInt(sl/2)*5 + 3;
+        for(var i=0; i<LevelDragon-1; i++)
+        {
+            if(sl%2 == 0)
+                sl = parseInt(sl/2)*5;
+            else
+                sl = parseInt(sl/2)*5 + 3;
+        }
     }
     var result = "Level rồng: " + LevelDragon + "<br>" + "Số lượng: 2<br>" + "Số lượng trứng rồng: "+ SplitThousand(sl) +" quả";
     document.getElementById("result").innerHTML = result;
@@ -124,13 +131,23 @@ function CalLevelAll()
 {
     var sl = parseInt(document.getElementById("Count").value);
     var Level = parseInt(document.getElementById("LevelMax").value);
-    for(var i=0; i<Level; i++)
+    if(Level < 2 && Level > 0)
+        sl = 2;
+    else if(Level < 0)
+        alert("Hehe, đừng trêu bé chứ, hí hí");
+    else if(Level > 20)
+        alert("Level cao quá ó vợ iu, hihi");
+    else
     {
-        if(sl%2 == 0)
-            sl = parseInt(sl/2)*5;
-        else
-            sl = parseInt(sl/2)*5 + 3;
+        for(var i=0; i<Level-1; i++)
+        {
+            if(sl%2 == 0)
+                sl = parseInt(sl/2)*5;
+            else
+                sl = parseInt(sl/2)*5 + 3;
+        }
     }
+    
     var result = "Level hiện tại: 1<br>"+"Level max: " + Level + "<br>" + "Số lượng cần: " + SplitThousand(sl);
     document.getElementById("ResultLevel").innerHTML = result;
     // alert("Hello world");
@@ -140,7 +157,7 @@ function SplitThousand(num)
 {
     var variable = num.toString();
     var result = "";
-    if(variable.length < 3)
+    if(variable.length <= 3)
         result = variable;
     while (variable.length > 3)
     {
