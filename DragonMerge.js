@@ -23,13 +23,13 @@ function CalLevelDragon()
 {
     var sl = 2;
     var LevelDragon = parseInt(document.getElementById("LevelDragon").value);
-    if(LevelDragon < 2 && LevelDragon > 0)
+    if(LevelDragon == 0)
         sl = 2;
     else if(LevelDragon < 0)
         alert("Hehe, đừng trêu bé chứ, hí hí");
     else
     {
-        for(var i=0; i<LevelDragon-1; i++)
+        for(var i=0; i<LevelDragon; i++)
         {
             if(sl%2 == 0)
                 sl = parseInt(sl/2)*5;
