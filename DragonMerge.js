@@ -1,44 +1,161 @@
-function CalEggs()
+// var widthscreen = screen.width;
+// var heightscreen = screen.height;
+// function getscreen()
+// {
+//     alert(widthscreen);
+//     alert(heightscreen);
+// }
+
+var Items = 0;
+
+function CalItems()
 {
     var CurrentMoney = parseInt(document.getElementById("CurrentMoney").value);
+    var growup = parseInt(document.getElementById("GrowUpMoney").value);
     // var LevelDragon = parseInt(document.getElementsByName("LevelDragon").value);
-    var OrderEggs = parseInt(document.getElementById("OrderEggs").value);
-    var CostForEgg = parseInt(document.getElementById("CostForEgg").value);
-    CostForEgg = OrderEggs*(CostForEgg+5);
+    var OrderItems = parseInt(document.getElementById("OrderItems").value);
+    var CostForItem = parseInt(document.getElementById("CostForItem").value);
+    CostForItem = OrderItems*(CostForItem+growup);
     var mess = "";
-    if(document.getElementById("CurrentMoney").value == ""&& CostForEgg > CurrentMoney)
+    var donvi = "";
+    if(document.getElementById("item").value == "DragonEgg")
+        donvi = "quả";
+    else 
+        donvi = "nhà";
+    
+    if(document.getElementById("CurrentMoney").value == ""&& CostForItem > CurrentMoney)
             mess = "Không xác định";
-    else if(document.getElementById("CurrentMoney").value != "" && CostForEgg > CurrentMoney)
+    else if(document.getElementById("CurrentMoney").value != "" && CostForItem > CurrentMoney)
     {
-        mess = "Không thể mua đủ " + SplitThousand(OrderEggs) + " quả trứng" + "<br>" + "Chỉ mua được: " + SplitThousand(parseInt(CurrentMoney/(parseInt(document.getElementById("CostForEgg").value)+5)));
-
+        mess = "Không thể mua đủ " + SplitThousand(OrderItems) + " " + donvi + "<br>" + "Chỉ mua được: " + SplitThousand(parseInt(CurrentMoney/(parseInt(document.getElementById("CostForItem").value)+growup))) + " " + donvi;
+        Items = parseInt(CurrentMoney/(parseInt(document.getElementById("CostForItem").value)+growup));
     }
     else
-        mess = "Mua đủ " + OrderEggs + " quả";
-    var result = "Lượng tiền hiện tại: "+ SplitThousand(CurrentMoney) +"<br>"+"Số trứng cần mua: "+ SplitThousand(OrderEggs) +"<br>"+ "Số tiền cần: "+ SplitThousand(CostForEgg) + "<br>" +mess;
+    {
+        mess = "Mua đủ " + OrderItems + " " + donvi;
+        Items = OrderItems;
+    }
+    var result = "Lượng tiền hiện tại: "+ SplitThousand(CurrentMoney) +"<br>"+"Số " + donvi + " cần mua: "+ SplitThousand(OrderItems) + " " + donvi +"<br>"+ "Số tiền cần: "+ SplitThousand(CostForItem) + "<br>" +mess;
     document.getElementById("result").innerHTML = result;
 }
 
-function CalLevelDragon()
+// amount items in level 1 to get 2 items in level user need
+function CalCountInLevel()
 {
     var sl = 2;
-    var LevelDragon = parseInt(document.getElementById("LevelDragon").value);
-    if(LevelDragon == 0)
+    var Level = parseInt(document.getElementById("Level").value);
+    var donvi = "";
+
+    if(document.getElementById("item").value == "DragonEgg")
+        donvi = "quả";
+    else
+        donvi = "nhà";
+
+    if(Level == 0)
         sl = 2;
-    else if(LevelDragon < 0)
+    else if(Level < 0)
         alert("Hehe, đừng trêu bé chứ, hí hí");
     else
     {
-        for(var i=0; i<LevelDragon; i++)
+        if(donvi == "quả")
         {
-            if(sl%2 == 0)
-                sl = parseInt(sl/2)*5;
-            else
-                sl = parseInt(sl/2)*5 + 3;
+            for(var i=0; i<Level; i++)
+            {
+                if(sl%2 == 0)
+                    sl = parseInt(sl/2)*5;
+                else
+                    sl = parseInt(sl/2)*5 + 3;
+            }
+        }
+        else
+        {
+            for(var i=0; i<Level-1; i++)
+            {
+                if(sl%2 == 0)
+                    sl = parseInt(sl/2)*5;
+                else
+                    sl = parseInt(sl/2)*5 + 3;
+            }
         }
     }
-    var result = "Level rồng: " + LevelDragon + "<br>" + "Số lượng: 2<br>" + "Số lượng trứng rồng: "+ SplitThousand(sl) +" quả";
+    var result = "Level: " + Level + "<br>" + "Số lượng: 2<br>" + "Số lượng mua được: "+ SplitThousand(sl) +" " + donvi;
     document.getElementById("result").innerHTML = result;
+}
+
+function CalLevelForItem()
+{
+    var count = Items;
+    var level = parseInt(document.getElementById("Level").value);
+    if(isNaN(level)==true)
+        alert("Hãy nhập level max muốn tính");
+    else if(count == 0)
+        alert("Vợ chưa tính số lượng");
+    else
+    {
+        var donvi = "";
+        if(document.getElementById("item").value == "DragonEgg")
+        {
+            donvi = "quả";
+        }
+        else
+            donvi = "nhà";
+
+        var result = "";
+        
+        if(level < 2 && level > 0 && donvi == "nhà")
+            count = 2;
+        else if(level < 0)
+            alert("Hehe, đừng trêu bé chứ, hí hí");
+        else if(level > 20)
+            alert("Level cao quá ó vợ iu, hihi");
+        else
+        {
+            if(donvi == "quả")
+            {
+                for(var i=0; i<level; i++)
+                {
+                    if(count == 1 && i<level || count == 0 && i<level)
+                    {
+                        count = 0;
+                        break;
+                    }
+                    else
+                    {
+                        if(count%5 == 0)
+                            count = parseInt(count/5)*2;
+                        else
+                            count = parseInt(count/5)*2 + 1;
+                    }
+                }
+            }
+            else
+            {
+                for(var i=0; i<level-1; i++)
+                {
+                    if(count == 1 && i<level-1 || count == 0 && i<level-1)
+                    {
+                        count = 0;
+                        break;
+                    }
+                    else
+                    {
+                        if(count%5 == 0)
+                            count = parseInt(count/5)*2;
+                        else
+                            count = parseInt(count/5)*2 + 1;
+                    }
+                }
+            }
+        }
+        if(donvi == "nhà")
+        {
+            result = "Số lượng ban đầu: " + Items + " " + donvi + "<br>" + "Level: " + level + "<br>" + "Số lượng có ở level " + level + " : " + count + " " + donvi;
+            document.getElementById("result").innerHTML = result;
+        }
+        result = "Số lượng ban đầu: " + Items + " " + donvi + "<br>" + "Level: " + level + "<br>" + "Số lượng có ở level " + level + " : " + count + " con";
+        document.getElementById("result").innerHTML = result;
+        
+    }
 }
 
 function Calculator()
@@ -172,4 +289,46 @@ function SplitThousand(num)
     }
     
     return result;
+}
+
+function MaxCount()
+{
+    var count = parseInt(document.getElementById("Count").value);
+    var level = parseInt(document.getElementById("LevelMax").value);
+    if(isNaN(count)==true&&isNaN(level)==true)
+        alert("Hãy nhập số lượng muốn có ở level 1 và level max");
+    else if(isNaN(count)==true)
+        alert("Hãy nhập vào số lượng muốn có ở level 1");
+    else if(isNaN(level)==true)
+        alert("Hãy nhập level max muốn tính");
+    else
+    {
+        var result = "";
+        if(level < 2 && level > 0)
+            count = 2;
+        else if(level < 0)
+            alert("Hehe, đừng trêu bé chứ, hí hí");
+        else if(level > 20)
+            alert("Level cao quá ó vợ iu, hihi");
+        else
+        {
+            for(var i=0; i<level-1; i++)
+            {
+                if(count == 1 && i<level-1 || count == 0 && i<level-1)
+                {
+                    count = 0;
+                    break;
+                }
+                else
+                {
+                    if(count%5 == 0)
+                        count = parseInt(count/5)*2;
+                    else
+                        count = parseInt(count/5)*2 + 1;
+                }
+            }
+        }
+        result = "Số lượng ở level 1: " + parseInt(document.getElementById("Count").value) + "<br>" + "Level max: " + level + "<br>" + "Số lượng có ở level " + level + " : " + count;
+        document.getElementById("ResultLevel").innerHTML = result;
+    }
 }

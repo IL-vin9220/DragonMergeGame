@@ -14,27 +14,41 @@
             <div class="inp">
                 <table align="center" style="margin-top: 30px;">
                     <tr>
-                        <td>Level rồng: </td>
-                        <td><input type="text" id="LevelDragon"></td>
-                        <td rowspan="5">
+                        <td>Đồ cần tính: </td>
+                        <td><select name="" id="item">
+                            <option value="DragonEgg">Trứng rồng</option>
+                            <option value="DragonHouse">Nhà rồng</option>
+                            <option value="StoneHouse">Nhà chứa đá</option>
+                            <option value="MoneyHouse">Nhà chứa vàng</option>
+                        </select></td>
+                        <td rowspan="7">
                             
-                            <button type="button"  class="btn1" onclick="CalEggs()">Tính số trứng rồng</button>
-                            <button type="button"  class="btn2" onclick="CalLevelDragon()">Tính level rồng</button><br>
-                            <button type="button"  class="btn3" onclick="Calculator()">Tính toán</button>
-                            <button type="button" class="btn4"><a href="index.html" style="text-decoration: none">Quay lại</a></button>
+                            <button type="button" class="btn1" onclick="CalItems()">Tính số lượng</button>
+                            <button type="button" class="btn2" onclick="CalCountInLevel()">Tính số lượng cần ở level 1</button><br>
+                            <button type="button" class="btn3" onclick="CalLevelForItem()">Tính số lượng có ở level</button>
+                            <button type="button" class="btn4" onclick="Calculator()">Tính toán</button>
+                            <button type="button" class="btn5"><a href="index.html" style="text-decoration: none">Quay lại</a></button>
                         </td>
                     </tr>
                     <tr>
-                        <td>Lượng tiền hiện tại: </td>
+                        <td>Level: </td>
+                        <td><input type="text" id="Level"></td>
+                    </tr>
+                    <tr>
+                        <td>Ngân sách hiện tại: </td>
                         <td><input type="text" id="CurrentMoney"></td>
                     </tr>
                     <tr>
-                        <td>Số trứng cần mua: </td>
-                        <td><input type="text" id="OrderEggs"></td>
+                        <td>Số lượng cần mua: </td>
+                        <td><input type="text" id="OrderItems"></td>
                     </tr>
                     <tr>
-                        <td>Giá 1 quả trứng hiện tại: </td>
-                        <td><input type="text" id="CostForEgg"></td>
+                        <td>Giá để mua 1 sản phẩm: </td>
+                        <td><input type="text" id="CostForItem"></td>
+                    </tr>
+                    <tr>
+                        <td>Mức tăng giá: </td>
+                        <td><input type="text" id="GrowUpMoney"></td>
                     </tr>
                     <tr>
                         <td>Tính toán: </td>
